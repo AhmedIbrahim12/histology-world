@@ -4,5 +4,3 @@ create table users(
 	user_password varchar(400),
     primary key(id)
 );
-
-insert into users (user_name,user_password) values ("Admin","admin12345");

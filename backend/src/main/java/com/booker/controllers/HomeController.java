@@ -8,25 +8,28 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.booker.controllers.annotations.RestEndpoint;
 import com.booker.services.roles.RolesService;
 import com.booker.services.users.User;
 
 @RestController
-@RestEndpoint
+@RequestMapping(value = "/api")
 public class HomeController {
 
-	@Autowired
-	RolesService rolesService;
+    @Autowired
+    RolesService rolesService;
 
-	@GetMapping(value = "/getUserRoles")
-	public List<String> getUserRoles(HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		if (user.getUserName().equals("Admin")) {
-			return rolesService.getAllRoles().stream().map(role -> role.getRoleName()).collect(Collectors.toList());
-		}
-		return new ArrayList<String>();
+    @GetMapping(value = "/getUserRoles")
+    public List<String> getUserRoles(HttpSession session) {
+	User user = (User) session.getAttribute("user");
+	if (user.getUserName().equals("Admin")) {
+	    return rolesService.getAllRoles()
+		    .stream()
+		    .map(role -> role.getRoleName())
+		    .collect(Collectors.toList());
 	}
+	return new ArrayList<String>();
+    }
 }

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: histoworld-api
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Ahmed Ibrahim
+Implementation-Vendor-Id: com.backend
+Build-Jdk: 1.8.0_131
+Implementation-URL: http://maven.apache.org/histoworld-api
+Created-By: Maven Integration for Eclipse
+Main-Class: com.booker.BackenedApplication
+

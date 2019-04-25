@@ -78,7 +78,10 @@ export default {
         params.append("password", this.loginData.password);
         AXIOS.post(`/login`, params)
           .then(response => {
-            if (response.data.userName != null) {
+            if (response.data) {
+              console.log(response.data);
+              this.$session.set("basicAuthHeader",response.data);
+              AXIOS.defaults.headers.common['Authorization'] = response.data;
               this.$router.replace("/main");
             } else {
               this.alert = true;

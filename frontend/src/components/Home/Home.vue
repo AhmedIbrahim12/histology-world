@@ -37,11 +37,7 @@
               <v-divider></v-divider>
 
               <v-layout tag="v-card-text" text-xs-center wrap>
-                <v-flex
-                  v-if="selected.attachmentDownloadUrl"
-                  tag="strong"
-                  xs10
-                >
+                <v-flex v-if="selected.attachmentDownloadUrl" tag="strong" xs10>
                   <a
                     :href="selected.attachmentDownloadUrl"
                     target="_blank"
@@ -84,6 +80,8 @@ export default {
 
   methods: {
     async fetchChildren(item) {
+      var authHeader = this.$session.get("basicAuthHeader");
+      console.log(authHeader);
       return AXIOS.get("/lecture/getAll")
         .then(res => res.data)
         .then(data => item.children.push(...data))
